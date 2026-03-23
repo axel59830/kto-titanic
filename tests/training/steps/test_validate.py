@@ -71,7 +71,8 @@ def test_validate_with_real_model_and_data(tmp_path):
             "Les importances devraient être numériques"
         )
 
-        mock_log_model.assert_called_once()
+        #mock_log_model.assert_called_once()
         call_kwargs = mock_log_model.call_args.kwargs
         assert "signature" in call_kwargs, "Le modèle devrait être loggé avec une signature"
         assert "input_example" in call_kwargs, "Le modèle devrait être loggé avec un input_example"
+        assert mock_log_model.call_count == 2
